@@ -1,0 +1,12 @@
+.information {
+    padding: 16pt;
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 12pt;
+}
+
+body {
+    margin: 16pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
