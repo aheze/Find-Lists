@@ -81,19 +81,18 @@ function checkClicked() {
         let stateObj = { originalSearch: originalSearch }
         window.history.replaceState(stateObj, "", linkStem + originalSearch);
         let applink = document.getElementById("applink");
-        applink.href = linkStem + originalSearch;
+        applink.href = schemeStem + originalSearch;
     }
 }
 
 function setUpdatedURL() {
 
-    console.log(linkStem)
-    console.log(updatedSearch)
-
     let stateObj = { originalSearch: originalSearch }
     window.history.replaceState(stateObj, "", linkStem + updatedSearch);
     let applink = document.getElementById("applink");
-    applink.href = linkStem + updatedSearch;
+    applink.href = schemeStem + updatedSearch;
+
+
 }
 
 window.onload = () => {

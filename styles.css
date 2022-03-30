@@ -23,7 +23,6 @@ body {
 input[type="checkbox"] {
     display: inline-block;
     width: 15px;
-    /* vertical-align: top; */
 }
 
 p.check-text {
