@@ -66,3 +66,23 @@ a.secondary {
     color: white;
     text-decoration: none;
 }
+
+/* unvisited link */
+a:link,
+a:active {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited,
+a:hover {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    color: aliceblue;
+    text-decoration: none;
+}

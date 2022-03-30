@@ -23,8 +23,8 @@ function decodeString(string) {
 }
 
 window.onload = () => {
-    let search = window.location.search.split("&words=")
-    let wordsString = search[1]
+    let searchSplit = window.location.search.split("&words=")
+    let wordsString = searchSplit[1]
     let wordsEncoded = wordsString.split(",")
     let words = wordsEncoded.map(decodeString)
     console.log(words)
@@ -39,8 +39,11 @@ window.onload = () => {
     })
 
 
-    let linkURL = window.location.search
+    console.log("Getting search.")
+    let search = window.location.search.substring(1)
+    let linkURL = "https://link.getfind.app/list?" + search
+    console.log(linkURL)
     let applink = document.getElementById("applink");
-    applink.href = "xyz.php"
+    applink.href = linkURL
     
 }
