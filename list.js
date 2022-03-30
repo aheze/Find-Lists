@@ -10,53 +10,48 @@ let icon = params.icon;
 let color = params.color;
 let dateCreated = params.dateCreated;
 
-
-console.log(title)
-console.log(description)
-console.log(icon)
-console.log(color)
-console.log(dateCreated)
-
+console.log(title);
+console.log(description);
+console.log(icon);
+console.log(color);
+console.log(dateCreated);
 
 function decodeString(string) {
-    return decodeURIComponent(string)
+    return decodeURIComponent(string);
 }
 
 window.onload = () => {
     if (!window.location.search) {
-        console.log("No search.")
-        return
+        console.log("No search.");
+        return;
     }
 
     let titleElement = document.getElementById("title");
-    titleElement.innerText = title ?? "Untitled"
+    titleElement.innerText = title ?? "Untitled";
 
     let descriptionElement = document.getElementById("description");
-    descriptionElement.innerText = description ?? "No Description"
+    descriptionElement.innerText = description ?? "No Description";
 
-
-    let searchSplit = window.location.search.split("&words=")
-    let wordsString = searchSplit[1]
+    let searchSplit = window.location.search.split("&words=");
+    let wordsString = searchSplit[1];
     if (wordsString) {
-        let wordsEncoded = wordsString.split(",")
-        let words = wordsEncoded.map(decodeString)
-        console.log(words)
-
+        let wordsEncoded = wordsString.split(",");
+        let words = wordsEncoded.map(decodeString);
+        console.log(words);
 
         let wordsList = document.getElementById("words");
         words.forEach((word) => {
             let p = document.createElement("p");
-            p.classList.add('word');
+            p.classList.add("word");
             p.innerText = word;
             wordsList.appendChild(p);
-        })
+        });
     }
 
-    console.log("Getting search.")
-    let search = window.location.search.substring(1)
-    let linkURL = "find://" + "type=list&" + search
-    console.log(linkURL)
+    console.log("Getting search.");
+    let search = window.location.search.substring(1);
+    let linkURL = "find://" + "type=list&" + search;
+    console.log(linkURL);
     let applink = document.getElementById("applink");
-    applink.href = linkURL
-
-}
+    applink.href = linkURL;
+};
