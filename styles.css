@@ -20,6 +20,26 @@ body {
     gap: 12px;
 }
 
+input[type="checkbox"] {
+    display: inline-block;
+    width: 15px;
+    /* vertical-align: top; */
+}
+
+p.check-text {
+  display: inline-block;
+  /* width: 200px; */
+  word-break: break-all; 
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+
 p {
     margin-top: 8px;
     margin-bottom: 8px;
