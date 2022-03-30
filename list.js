@@ -23,27 +23,40 @@ function decodeString(string) {
 }
 
 window.onload = () => {
+    if (!window.location.search) {
+        console.log("No search.")
+        return
+    }
+
+    let titleElement = document.getElementById("title");
+    titleElement.innerText = title ?? "Untitled"
+
+    let descriptionElement = document.getElementById("description");
+    descriptionElement.innerText = description ?? "No Description"
+
+
     let searchSplit = window.location.search.split("&words=")
     let wordsString = searchSplit[1]
-    let wordsEncoded = wordsString.split(",")
-    let words = wordsEncoded.map(decodeString)
-    console.log(words)
+    if (wordsString) {
+        let wordsEncoded = wordsString.split(",")
+        let words = wordsEncoded.map(decodeString)
+        console.log(words)
 
 
-    let wordsList = document.getElementById("words");
-    words.forEach((word) => {
-        let p = document.createElement("p");
-        p.classList.add('word');
-        p.innerText = word;
-        wordsList.appendChild(p);
-    })
-
+        let wordsList = document.getElementById("words");
+        words.forEach((word) => {
+            let p = document.createElement("p");
+            p.classList.add('word');
+            p.innerText = word;
+            wordsList.appendChild(p);
+        })
+    }
 
     console.log("Getting search.")
     let search = window.location.search.substring(1)
-    let linkURL = "https://link.getfind.app/list?" + search
+    let linkURL = "find://" + search
     console.log(linkURL)
     let applink = document.getElementById("applink");
     applink.href = linkURL
-    
+
 }
