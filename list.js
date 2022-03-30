@@ -54,7 +54,7 @@ window.onload = () => {
 
     console.log("Getting search.")
     let search = window.location.search.substring(1)
-    let linkURL = "find://" + search
+    let linkURL = "find://" + "type=list&" + search
     console.log(linkURL)
     let applink = document.getElementById("applink");
     applink.href = linkURL
