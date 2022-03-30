@@ -17,12 +17,30 @@ console.log(icon)
 console.log(color)
 console.log(dateCreated)
 
-let search = window.location.search.split("&words=")
-let wordsString = search[1]
-let wordsEncoded = wordsString.split(",")
-let words = wordsEncoded.map(decodeString)
-console.log(words)
 
 function decodeString(string) {
-    return decodeURI(string)
+    return decodeURIComponent(string)
+}
+
+window.onload = () => {
+    let search = window.location.search.split("&words=")
+    let wordsString = search[1]
+    let wordsEncoded = wordsString.split(",")
+    let words = wordsEncoded.map(decodeString)
+    console.log(words)
+
+
+    let wordsList = document.getElementById("words");
+    words.forEach((word) => {
+        let p = document.createElement("p");
+        p.classList.add('word');
+        p.innerText = word;
+        wordsList.appendChild(p);
+    })
+
+
+    let linkURL = window.location.search
+    let applink = document.getElementById("applink");
+    applink.href = "xyz.php"
+    
 }
