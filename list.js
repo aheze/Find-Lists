@@ -82,6 +82,7 @@ function checkClicked() {
         window.history.replaceState(stateObj, "", linkStem + originalSearch);
         let applink = document.getElementById("applink");
         applink.href = schemeStem + originalSearch;
+        console.log(schemeStem + originalSearch)
     }
 }
 
@@ -91,7 +92,7 @@ function setUpdatedURL() {
     window.history.replaceState(stateObj, "", linkStem + updatedSearch);
     let applink = document.getElementById("applink");
     applink.href = schemeStem + updatedSearch;
-
+    console.log(schemeStem + updatedSearch)
 
 }
 
