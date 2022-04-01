@@ -8,7 +8,7 @@ body {
     margin-right: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
     body {
         padding: 8px 32px;
     }
@@ -41,6 +41,17 @@ p {
     background-color: rgba(0, 110, 255, 0.1);
     color: rgb(0, 110, 255);
     border-radius: 12pt;
+}
+
+#title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .word {
@@ -81,4 +92,13 @@ a:hover {
 a:visited,
 a:hover {
     color: aliceblue;
+}
+
+/* Put all the nested label elements on one line */
+label * {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
 }

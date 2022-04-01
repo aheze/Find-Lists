@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Find - List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
 
-<head>
-    <title>Find - List</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-</head>
+    <body>
+        <h1>List</h1>
 
-<body>
-    <h1>List</h1>
+        <div class="container">
+            <div class="information">
+                <p>
+                    <strong>Download Find to use this list.</strong> Find is an
+                    app to find text in real life.
+                </p>
 
-    <div class="container">
-        <div class="information">
-            <p>
-                <strong>Download Find to use this list.</strong> Find is an
-                app to find text in real life.
-            </p>
+                <a class="primary" href="https://getfind.app/">Download Find</a>
 
-            <a class="primary" href="https://getfind.app/">Download Find</a>
+                <a class="secondary" id="applink" href="https://getfind.app/"
+                    >I already have the app</a
+                >
+            </div>
 
-            <a class="secondary" id="applink" href="https://getfind.app/">I already have the app</a>
-        </div>
-
-        <div class="list">
-            <div class="content">
-                <strong>
+            <div class="list">
+                <div class="content">
                     <p id="title">Title</p>
-                </strong>
+                    <p id="description">Description</p>
+                </div>
 
-                <p id="description">Description</p>
+                <div id="wordsContainer" class="content">
+                    <p>Words</p>
+                    <!-- <ul id="words"></ul> -->
+                    <div id="words"></div>
+                </div>
+
+                <label id="updateCreationDate">
+                    <input
+                        type="checkbox"
+                        id="check"
+                        onclick="checkClicked()"
+                    />
+
+                    <p class="check-text" id="check-text">
+                        Update creation date to Today
+                    </p>
+                </label>
             </div>
-
-            <div class="content">
-                <p>Words</p>
-                <!-- <ul id="words"></ul> -->
-                <div id="words"></div>
-            </div>
-
-
-            <label>
-                <input type="checkbox" id="check" onclick="checkClicked()">
-                <p class="check-text" id="check-text">Update creation date to Today</p>
-            </label>
-
         </div>
-    </div>
-</body>
+    </body>
 
-<script src="list.js"></script>
-
+    <script src="list.js"></script>
 </html>

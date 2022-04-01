@@ -1,85 +1,111 @@
 // ?title=title&description=some%20devs&icon=bubble.left&color=4283699240&dateCreated=2022-03-28T19%3A33%3A10Z&words=another%20word,hi
 
+/** @typedef {{ name: string; value: string }} SearchParam */
+
+const applink = document.getElementById("applink");
+const checkbox = document.getElementById("check");
+const titleElement = document.getElementById("title");
+const descriptionElement = document.getElementById("description");
+const wordsList = document.getElementById("words");
+
+const wordsContainer = document.getElementById("wordsContainer");
+const updateCreationDateCheckbox =
+    document.getElementById("updateCreationDate");
+
 let originalSearch = window.location.search.substring(1);
 
-let currentState = history.state
+let currentState = history.state;
 if (currentState) {
-    console.log("exists!!!!")
-    originalSearch = currentState.originalSearch
+    console.log("Current history exists");
+    originalSearch = currentState.originalSearch;
 }
-console.log(currentState)
-console.log(`originL ${originalSearch}`)
+console.log(currentState);
+console.log(`original search: ${originalSearch}`);
 
-/// update for date
-let queries = getSearchQueries(originalSearch)
-let date = new Date()
-let dateString = date.toISOString()
-let dateEncoded = encodeURIComponent(dateString)
-const isDateCreated = (element) => element.name === "dateCreated";
-let dateIndex = queries.findIndex(isDateCreated)
-if (dateIndex) {
-    queries[dateIndex].value = dateEncoded
-}
+/**
+ * Get the search parameters
+ * @param {string} search - A query string
+ * @returns {SearchParam[]} The search parameters
+ */
+const getSearchQueries = (search) => {
+    let parameters = search.split("&");
+    let queries = [];
 
-/// contains the query
-var updatedSearch = ""
-for (i = 0; i < queries.length; i++) {
-    let query = queries[i]
-    let name
-    if (i == 0) {
-        name = `${query.name}=`
-    } else {
-        name = `&${query.name}=`
+    for (i = 0; i < parameters.length; i++) {
+        let parameter = parameters[i];
+        let parameterSplit = parameter.split("=");
+
+        let name = parameterSplit[0];
+        let value = parameterSplit[1];
+
+        let query = { name: name, value: value };
+        queries.push(query);
     }
-    let value = query.value
-    let queryString = name + value
-    updatedSearch += queryString
-}
 
-let linkStem = window.location.pathname + "?"
-console.log(`Link: ${linkStem}`)
-let schemeStem = "find://" + "type=list&"
+    return queries;
+};
+
+/**
+ * Generate a query string from an array of parameters
+ * @param {SearchParam[]} queries - Query string parameters (generated from {@link getSearchQueries})
+ * @returns {string} The query string
+ */
+const generateQueryString = (queries) =>
+    queries.map(({ name, value }) => `${name}=${value}`).join("&");
+
+/**
+ * Update the URL
+ */
+const updateURL = () => {
+    const dateCreated = queries.find(({ name }) => name === "dateCreated");
+    if (dateCreated) {
+        dateCreated.value = encodeURIComponent(new Date().toISOString());
+    }
+    window.history.replaceState({ originalSearch }, "", link);
+    applink.href = deepLink;
+};
+
+/**
+ * When the checkbox is clicked
+ */
+const checkClicked = () => updateURL();
+
+const queries = getSearchQueries(originalSearch);
+
+const link = window.location.pathname + `?${generateQueryString(queries)}`;
+const deepLink = `find://type=list&${generateQueryString(queries)}`;
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
 });
 
-let title = params.title;
-let description = params.description;
-let icon = params.icon;
-let color = params.color;
-
 window.onload = () => {
     if (!originalSearch) {
-        console.log("No search.");
+        console.log("No search query.");
+
+        titleElement.innerText = "No Title";
+        descriptionElement.innerText = "No Description";
+
+        wordsContainer.classList.add("hidden");
+        updateCreationDateCheckbox.classList.add("hidden");
+
         return;
     }
 
-    let titleElement = document.getElementById("title");
-    titleElement.innerText = title ?? "Untitled";
+    titleElement.innerText = params.title ?? "Untitled";
+    descriptionElement.innerText = params.description ?? "No Description";
 
-    let descriptionElement = document.getElementById("description");
-    descriptionElement.innerText = description ?? "No Description";
-
-    let searchSplitWords = originalSearch.split("&words=");
-    let wordsString = searchSplitWords[1];
-    if (wordsString) {
-        let wordsEncoded = wordsString.split(",");
-        let words = wordsEncoded.map(decodeURIComponent);
+    const wordsParameter = queries.find(({ name }) => name === "words");
+    if (wordsParameter) {
+        const words = wordsParameter.value.split(",").map(decodeURIComponent);
         console.log(words);
 
-        let wordsList = document.getElementById("words");
         words.forEach((word) => {
-            let p = document.createElement("p");
+            const p = document.createElement("p");
             p.classList.add("word");
             p.innerText = word;
+
             wordsList.appendChild(p);
         });
     }
-
-
-    var checkBox = document.getElementById("check");
-    checkBox.checked = true
-    setUpdatedURL()
-
 };
