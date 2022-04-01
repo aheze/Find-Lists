@@ -43,6 +43,11 @@ p {
     border-radius: 12pt;
 }
 
+#title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
 .list {
     display: flex;
     flex-direction: column;
