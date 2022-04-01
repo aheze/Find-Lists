@@ -43,6 +43,12 @@ p {
     border-radius: 12pt;
 }
 
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .word {
     text-align: center;
     padding: 12px 16px;
@@ -81,4 +87,9 @@ a:hover {
 a:visited,
 a:hover {
     color: aliceblue;
+}
+
+/* Put all the nested label elements on one line */
+label * {
+    display: inline-block;
 }
