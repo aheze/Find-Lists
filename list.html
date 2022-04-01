@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Find - List</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <h1>List</h1>
 
-        <div class="container">
-            <div class="information">
-                <p>
-                    <strong>Download Find to use this list.</strong> Find is an
-                    app to find text in real life.
-                </p>
+<head>
+    <title>Find - List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
 
-                <a class="primary" href="https://getfind.app/">Download Find</a>
+<body>
+    <h1>List</h1>
 
-                <a class="secondary" id="applink" href="https://getfind.app/"
-                    >I already have the app</a
-                >
-            </div>
+    <div class="container">
+        <div class="information">
+            <p>
+                <strong>Download Find to use this list.</strong> Find is an
+                app to find text in real life.
+            </p>
 
+            <a class="primary" href="https://getfind.app/">Download Find</a>
+
+            <a class="secondary" id="applink" href="https://getfind.app/">I already have the app</a>
+        </div>
+
+        <div class="list">
             <div class="content">
                 <strong>
                     <p id="title">Title</p>
@@ -35,8 +36,17 @@
                 <!-- <ul id="words"></ul> -->
                 <div id="words"></div>
             </div>
-        </div>
-    </body>
 
-    <script src="list.js"></script>
+
+            <label>
+                <input type="checkbox" id="check" onclick="checkClicked()">
+                <p class="check-text" id="check-text">Update creation date to Today</p>
+            </label>
+
+        </div>
+    </div>
+</body>
+
+<script src="list.js"></script>
+
 </html>
