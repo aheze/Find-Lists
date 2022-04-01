@@ -98,3 +98,7 @@ a:hover {
 label * {
     display: inline-block;
 }
+
+.hidden {
+    display: none;
+}
