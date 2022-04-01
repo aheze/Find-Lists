@@ -1,4 +1,4 @@
-# Find-Lists
+# Find Lists
 
 Website for sharing lists (data encoded in URL).
 
