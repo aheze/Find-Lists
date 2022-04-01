@@ -16,10 +16,6 @@ console.log(icon);
 console.log(color);
 console.log(dateCreated);
 
-function decodeString(string) {
-    return decodeURIComponent(string);
-}
-
 window.onload = () => {
     if (!window.location.search) {
         console.log("No search.");
@@ -36,7 +32,7 @@ window.onload = () => {
     let wordsString = searchSplit[1];
     if (wordsString) {
         let wordsEncoded = wordsString.split(",");
-        let words = wordsEncoded.map(decodeString);
+        let words = wordsEncoded.map(decodeURIComponent);
         console.log(words);
 
         let wordsList = document.getElementById("words");
