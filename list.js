@@ -49,52 +49,6 @@ let description = params.description;
 let icon = params.icon;
 let color = params.color;
 
-function decodeString(string) {
-    return decodeURIComponent(string);
-}
-
-function getSearchQueries(search) {
-    let parameters = search.split("&")
-    var queries = []
-
-    for (i = 0; i < parameters.length; i++) {
-        let parameter = parameters[i]
-        let parameterSplit = parameter.split("=")
-
-        let name = parameterSplit[0]
-        let value = parameterSplit[1]
-
-        let query = { name: name, value: value }
-        queries.push(query)
-    }
-    return queries
-}
-
-function checkClicked() {
-    // Get the checkbox
-    var checkBox = document.getElementById("check");
-
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true) {
-        setUpdatedURL()
-    } else {
-        let stateObj = { originalSearch: originalSearch }
-        window.history.replaceState(stateObj, "", linkStem + originalSearch);
-        let applink = document.getElementById("applink");
-        applink.href = schemeStem + originalSearch;
-    }
-}
-
-function setUpdatedURL() {
-
-    let stateObj = { originalSearch: originalSearch }
-    window.history.replaceState(stateObj, "", linkStem + updatedSearch);
-    let applink = document.getElementById("applink");
-    applink.href = schemeStem + updatedSearch;
-
-
-}
-
 window.onload = () => {
     if (!originalSearch) {
         console.log("No search.");
@@ -111,7 +65,7 @@ window.onload = () => {
     let wordsString = searchSplitWords[1];
     if (wordsString) {
         let wordsEncoded = wordsString.split(",");
-        let words = wordsEncoded.map(decodeString);
+        let words = wordsEncoded.map(decodeURIComponent);
         console.log(words);
 
         let wordsList = document.getElementById("words");
