@@ -1,11 +1,13 @@
 {
-  "applinks": {
-    "apps": [],
-    "details": [
-    {
-      "appID": "YA533DMD5J.com.ktkpiano.FindAppCommand",
-      "paths": ["*"]
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "YA533DMD5J.com.ktkpiano.FindAppCommand",
+                "paths": [
+                    "*"
+                ]
+            }
+        ]
     }
-    ]
-  }
 }
