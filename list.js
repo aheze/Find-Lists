@@ -42,21 +42,6 @@ const getSearchQueries = (search) => {
         queries.push(query);
     }
 
-<<<<<<< HEAD
-function checkClicked() {
-    // Get the checkbox
-    var checkBox = document.getElementById("check");
-
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true) {
-        setUpdatedURL()
-    } else {
-        let stateObj = { originalSearch: originalSearch }
-        window.history.replaceState(stateObj, "", linkStem + originalSearch);
-        let applink = document.getElementById("applink");
-        applink.href = schemeStem + originalSearch;
-        console.log(schemeStem + originalSearch)
-=======
     return queries;
 };
 
@@ -75,7 +60,6 @@ const updateURL = () => {
     const dateCreated = queries.find(({ name }) => name === "dateCreated");
     if (dateCreated) {
         dateCreated.value = encodeURIComponent(new Date().toISOString());
->>>>>>> 717355293524594a728a781a0be38504ec8c9bb2
     }
     window.history.replaceState({ originalSearch }, "", link);
     applink.href = deepLink;
@@ -86,18 +70,10 @@ const updateURL = () => {
  */
 const checkClicked = () => updateURL();
 
-<<<<<<< HEAD
-    let stateObj = { originalSearch: originalSearch }
-    window.history.replaceState(stateObj, "", linkStem + updatedSearch);
-    let applink = document.getElementById("applink");
-    applink.href = schemeStem + updatedSearch;
-    console.log(schemeStem + updatedSearch)
-=======
 const queries = getSearchQueries(originalSearch);
 
 const link = window.location.pathname + `?${generateQueryString(queries)}`;
 const deepLink = `find://type=list&${generateQueryString(queries)}`;
->>>>>>> 717355293524594a728a781a0be38504ec8c9bb2
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
@@ -132,4 +108,6 @@ window.onload = () => {
             wordsList.appendChild(p);
         });
     }
+
+    applink.href = deepLink;
 };
